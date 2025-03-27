@@ -64,7 +64,7 @@ function MainPage() {
         <Routes>
           <Route path="/" element={<HomePage handleImageUpload={handleImageUpload} selectedImage={selectedImage} isAnalyzing={isAnalyzing} result={result} faqs={faqs} />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/diseaseInfo" element ={<DiseaseInfoPage/>}/>
+          <Route path="/diseaseinfo/:diseaseName" element ={<DiseaseInfoPage/>}/>
         </Routes>
       </main>
 

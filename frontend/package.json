@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
+    "@react-pdf/renderer": "^4.3.0",
     "autoprefixer": "^10.4.16",
     "axios": "^1.8.4",
     "framer-motion": "^10.18.0",
