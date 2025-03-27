@@ -3,11 +3,13 @@ import { motion } from "framer-motion";
 import { FaUpload, FaCamera, FaRobot, FaClipboardList } from "react-icons/fa";
 import { Disclosure, Transition } from "@headlessui/react";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
 // import DiseaseInfoPage from "./DiseaseInfoPage";
 import { useNavigate } from "react-router-dom";
 
 
 const HomePage = ({ faqs }) => {
+   const{t}=useTranslation();
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -59,10 +61,10 @@ const HomePage = ({ faqs }) => {
       >
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            AI-Powered Plant Health Diagnostics
+          {t('hero.title')}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Keep your plants healthy with advanced AI technology that detects diseases instantly
+          {t('hero.subtitle')}
           </p>
           <div className="max-w-xl mx-auto">
             <label className="relative group cursor-pointer">
@@ -74,7 +76,7 @@ const HomePage = ({ faqs }) => {
               />
               <div className="flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white transition-colors duration-200">
                 <FaUpload className="mr-2" />
-                Upload Plant Image
+                {t('hero.upload')}
               </div>
             </label>
           </div>
@@ -125,13 +127,13 @@ const HomePage = ({ faqs }) => {
        <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            How AgriCure Works
+          {t('howItWorks.title')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: FaCamera, title: 'Upload', description: 'Upload a clear photo of your plant leaf' },
-              { icon: FaRobot, title: 'Analyze', description: 'Our AI processes the image for disease patterns' },
-              { icon: FaClipboardList, title: 'Diagnose', description: 'Get detailed health analysis and recommendations' }
+              { icon: FaCamera, title: t('howItWorks.steps.capture.title'), description: t('howItWorks.steps.capture.description') },
+              { icon: FaRobot, title: t('howItWorks.steps.analyze.title'), description:t('howItWorks.steps.analyze.description') },
+              { icon: FaClipboardList, title: t('howItWorks.steps.diagnose.title'), description: t('howItWorks.steps.diagnose.description') }
             ].map((step, index) => (
               <motion.div
                 key={index}
@@ -155,7 +157,7 @@ const HomePage = ({ faqs }) => {
       <section className="py-16 bg-green-50 dark:bg-gray-800">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            Frequently Asked Questions
+          {t('faqs.title')}
           </h2>
           <div className="max-w-2xl mx-auto">
             {faqs.map((faq, index) => (

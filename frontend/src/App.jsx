@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { FaLeaf, FaGithub, FaMoon, FaSun } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import HomePage from './components/HomePage';
 import DiseaseInfoPage from './components/DiseaseInfoPage';
 import AboutPage from './components/AboutPage';
+import LanguageSelector from './components/LanguageSelector';
 
 
 function MainPage() {
+  const{t}=useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState('');
@@ -29,12 +32,27 @@ function MainPage() {
     }
   };
 
-  const faqs = [
-    { question: 'What types of pest can AgriCure detect?', answer: 'AgriCure can analyze a wide variety of crops, including common vegetables, fruits, and field plants. Our AI-powered system continuously evolves, enhancing its ability to detect pests and diseases accurately.' },
-    { question: 'How accurate is the disease detection?', answer:  'Our AI model has been trained on thousands of plant images and achieves high accuracy in detecting common plant diseases. However, we recommend consulting with professionals for critical decisions.' },
-    { question: 'Is my plant data secure?', answer:  'Yes, we take data privacy seriously. Your uploaded images are processed securely and are not stored permanently on our servers.' },
-    { question: 'Is AgriCure accessible offline?', answer: 'Currently, AgriCure requires an internet connection for image analysis, but we are working on offline capabilities.' },
-    { question: 'How can I ensure accurate results?', answer: 'Ensure the image is clear, well-lit, and focused on the affected plant area.' }
+   const faqs = [
+    {
+      question: t('faqs.questions.plants.question'),
+      answer: t('faqs.questions.plants.answer')
+    },
+    {
+      question: t('faqs.questions.accuracy.question'),
+      answer:  t('faqs.questions.accuracy.answer')
+    },
+    {
+      question: t('faqs.questions.security.question'),
+      answer:  t('faqs.questions.security.answer')
+    },
+    {
+      question: t('faqs.questions.offlineaccess.question'),
+      answer:  t('faqs.questions.offlineaccess.answer')
+    },
+    {
+      question: t('faqs.questions.accuracy2.question'),
+      answer: t('faqs.questions.accuracy2.answer')
+    }
   ];
 
   return (
@@ -47,14 +65,16 @@ function MainPage() {
             <span className="text-xl font-bold text-green-600">AgriCure</span>
           </Link>
           <div className="flex items-center space-x-6">
-            <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-green-600">Home</Link>
-            <Link to="/about" className="text-gray-600 dark:text-gray-300 hover:text-green-600">About</Link>
+            <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-green-600">{t('nav.home')}</Link>
+            <Link to="/about" className="text-gray-600 dark:text-gray-300 hover:text-green-600">{t('nav.about')}</Link>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-green-600">
               <FaGithub className="text-xl" />
             </a>
+            <LanguageSelector/>
             <button onClick={toggleDarkMode} className="text-gray-600 dark:text-gray-300 hover:text-green-600">
               {isDarkMode ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
             </button>
+
           </div>
         </nav>
       </header>
@@ -75,7 +95,7 @@ function MainPage() {
       <FaGithub />
     </a>
   </div>
-  <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">© 2025 AgriCure</p>
+  <p className="text-gray-600 dark:text-gray-300 text-sm mt-2"> {t('footer.copyright')}</p>
 </footer>
     </div>
   );
