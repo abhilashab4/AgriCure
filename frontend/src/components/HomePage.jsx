@@ -48,9 +48,13 @@ const HomePage = ({ faqs }) => {
 
   
   const handleLearnMore = () => {
-    navigate(`/disease-info/${encodeURIComponent(result)}`)
-};
-
+    console.log("Navigating to disease info:", result);
+    if (!result) {
+      console.error("Disease name is missing!");
+      return;
+    }
+    navigate(`/diseaseinfo/${encodeURIComponent(result)}`);
+  };
   return (
     <>
       {/* Hero Section */}

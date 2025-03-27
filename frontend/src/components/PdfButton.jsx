@@ -70,29 +70,42 @@ const PDFReport = ({ diseaseInfo }) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.title}> Plant Disease Report</Text>
+          <Text style={styles.title}>AgriCure - Plant Disease Report</Text>
           <Text style={styles.text}>{`Generated on: ${currentDate}`}</Text>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.subtitle}>{diseaseInfo.name}</Text>
-          <Text style={styles.probability}>
-            Confidence Level: {diseaseInfo.probability}%
-          </Text>
           
           <Text style={styles.subtitle}>Description</Text>
           <Text style={styles.text}>{diseaseInfo.description}</Text>
 
-          <Text style={styles.recommendationTitle}>Recommended Actions</Text>
-          {diseaseInfo.recommendations.map((recommendation, index) => (
-            <Text key={index} style={styles.recommendation}>
-              • {recommendation}
-            </Text>
-          ))}
+            <Text style={styles.subtitle}>Cause</Text>
+            <Text style={styles.text}>{diseaseInfo.cause}</Text>
+
+            <Text style={styles.subtitle}>Symptoms</Text>
+            {diseaseInfo.symptoms.map((symptom, index) => (
+              <Text key={index} style={styles.text}>{symptom}</Text>
+            ))}
+
+            <Text style={styles.subtitle}>Prevention</Text>
+            {diseaseInfo.prevention.map((step, index) => (
+              <Text key={index} style={styles.text}>{step}</Text>
+            ))}
+
+            <Text style={styles.subtitle}>Solution</Text>
+            <Text style={styles.text}>{diseaseInfo.solution}</Text>
+
+
+            <Text style={styles.subtitle}>Youtube Link</Text>
+            <Text style={styles.text}>{diseaseInfo.link}</Text>
+
+
+
         </View>
 
         <Text style={styles.footer}>
-          © {new Date().getFullYear()} 
+          © {new Date().getFullYear()} AgriCure. All rights reserved.
         </Text>
       </Page>
     </Document>

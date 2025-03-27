@@ -5,8 +5,9 @@ import io
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-
+from .models import DiseaseInfo
+from .serializers import DiseaseInfoSerializer
+from rest_framework import status
 # Load the trained model
 model_path = r"D:\Aetherion\AgriCure\backend\model_files\model.pth"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -38,13 +39,18 @@ model.to(device)
 model.eval()
 
 # Define Transformations
+
 transform = transforms.Compose([
     transforms.Resize((128, 128)),
+    transforms.RandomRotation(20),  # Rotate images randomly up to 20 degrees
+    transforms.RandomHorizontalFlip(p=0.5),  # Flip images horizontally with 50% probability
+    transforms.RandomVerticalFlip(p=0.5),  # Flip images vertically with 50% probability
+    transforms.ColorJitter(brightness=0.2, contrast=0.2),  # Adjust brightness and contrast
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])  # Fixed normalization
+    transforms.Normalize(mean=[0.5], std=[0.5])
 ])
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def detect_disease(request):
     if "image" not in request.FILES:
         return Response({"error": "No image uploaded"}, status=400)
@@ -85,33 +91,31 @@ def detect_disease(request):
 
 
 
-# @api_view(['POST', 'GET'])
-# def diseaseinfo(request):
+@api_view(['POST', 'GET'])
+def diseaseinfo(request):
+    if request.method == 'POST':
+        data = request.data
+        info = DiseaseInfo.objects.create(
+            name=data['name'],
+            description=data['description'],
+            cause=data['cause'],
+            symptoms=data['symptoms'],
+            prevention=data['prevention'],
+            solution=data['solution'],
+        )
+        serializer = DiseaseInfoSerializer(info, many=False)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-#     if request.method == 'POST':
-#         data = request.data
-#         info = DiseaseInfo.objects.create(
-#             name = data['name'],
-#             description = data['description'],
-#             cause = data['cause'],
-#             symptoms = data['symptoms'],
-#             prevention = data['prevention'],
-#             solution = data['solution'],
-#         )
-#         serializer = DiseaseInfoSerializer(info, many=False)
-#         return Response(serializer.data) 
-    
-#     if request.method == 'GET':
-#         info = DiseaseInfo.objects.all()
-#         serializer = DiseaseInfoSerializer(info, many=True)
-#         return Response(serializer.data)
-
-    
-# @api_view(['GET'])
-# def get_disease(request, name):
-#     info = DiseaseInfo.objects.get(name=name)
-#     serializer = DiseaseInfoSerializer(info, many=False)
-#     return Response(serializer.data)
+    if request.method == 'GET':
+        info = DiseaseInfo.objects.all()
+        serializer = DiseaseInfoSerializer(info, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+
+@api_view(['GET','POST'])
+def get_disease(request, name):
+    info = DiseaseInfo.objects.get(name=name)
+    serializer = DiseaseInfoSerializer(info, many=False)
+    return Response(serializer.data)
 

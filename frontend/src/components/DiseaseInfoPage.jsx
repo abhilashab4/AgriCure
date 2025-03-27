@@ -3,19 +3,18 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { ClipLoader } from 'react-spinners';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import PDFReport from './PdfUpload';
 
-const DiseaseInfoPage = ({ isAnalyzing, diseaseInfo, error }) => {
+const DiseaseInfoPage = ({ isAnalyzing, diseaseDetail, error }) => {
   const navigate = useNavigate();
 
   return (
+    <div>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="pt-24 pb-12"
-    >
+      >
       <div className="container mx-auto px-6">
         <div className="flex items-center mb-8">
           <button
@@ -28,26 +27,6 @@ const DiseaseInfoPage = ({ isAnalyzing, diseaseInfo, error }) => {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white ml-4">
             Disease Diagnosis Results
           </h1>
-        </div>
-        <div>
-        {diseaseInfo && (
-            <PDFDownloadLink
-              document={<PDFReport diseaseInfo={diseaseInfo} />}
-              fileName={`plant-disease-report-${new Date().toISOString().split('T')[0]}.pdf`}
-              className="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              {({ blob, url, loading, error }) =>
-                loading ? (
-                  'Generating PDF...'
-                ) : (
-                  <>
-                    <FaDownload className="mr-2" />
-                    Download Report
-                  </>
-                )
-              }
-            </PDFDownloadLink>
-          )}
         </div>
 
         {/* Content */}
@@ -130,7 +109,8 @@ const DiseaseInfoPage = ({ isAnalyzing, diseaseInfo, error }) => {
           )}
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
