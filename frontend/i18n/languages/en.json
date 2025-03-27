@@ -1,0 +1,92 @@
+{
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "github": "GitHub"
+    },
+    "hero": {
+      "title": "AI-Powered Plant Health Diagnostics",
+      "subtitle": "Keep your plants healthy with advanced AI technology that detects diseases instantly",
+      "upload": "Upload Plant Image",
+      "analyze": "Analyze Disease"
+    },
+    "howItWorks": {
+      "title": "How AgriCure Works",
+      "steps": {
+        "capture": {
+          "title": "Capture",
+          "description": "Take a clear photo of your plant leaf"
+        },
+        "analyze": {
+          "title": "Analyze",
+          "description": "Our AI processes the image for disease patterns"
+        },
+        "diagnose": {
+          "title": "Diagnose",
+          "description": "Get detailed health analysis and recommendations"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "questions": {
+        "plants": {
+          "question": "What types of plants can Agricure analyze?",
+          "answer": "AgriCure can analyze a wide variety of crops, including common vegetables, fruits, and field plants. Our AI-powered system continuously evolves, enhancing its ability to detect pests and diseases accurately."
+        },
+        "accuracy": {
+          "question": "How accurate is the disease detection?",
+          "answer": "Our AI model has been trained on thousands of plant images and achieves high accuracy in detecting common plant diseases. However, we recommend consulting with professionals for critical decisions."
+        },
+        "security": {
+          "question": "Is my plant data secure?",
+          "answer": "Yes, we take data privacy seriously. Your uploaded images are processed securely and are not stored permanently on our servers."
+        },
+        "offlineaccess":{
+            "question":"Is AgriCure accessible offline?",
+            "answer":"Currently, AgriCure requires an internet connection for image analysis, but we are working on offline capabilities."
+        },
+        "accuracy2":{
+            "question":"How can I ensure accurate results?",
+            "answer":"Ensure the image is well-lit, clear, and focused on the affected plant area for the best analysis results."
+        }
+      }
+    },
+    "footer": {
+      "copyright": "©  All rights reserved."
+    },
+    "about": {
+      "title": "About AgriCure",
+      "description": "An AI-powered platform transforming plant health management by combining advanced technology with actionable agricultural insights, offering farmers accurate pest detection and effective control solutions",
+      "mission": {
+        "title": "Our Mission",
+        "description": " AgriCure blends modern AI technology with practical agricultural knowledge to deliver accurate and accessible plant health diagnostics. Designed to empower farmers, our platform offers real-time pest detection and effective control solutions, ensuring healthier crops and sustainable farming practices."
+      },
+      "inspiration": {
+        "title": "Our Inspiration",
+        "description": "The AgriCure platform draws inspiration from the deep connection between nature and agricultural wisdom.Just as traditional practices emphasized nurturing the land, we harness the power of AI to diagnose plant health, detect pests, and provide effective solutions — ensuring a sustainable and prosperous future for farmers."
+      },
+      "team": {
+        "title": "Team AgriCure",
+        "description": "Our dedicated team of technologists, agricultural specialists, and AI experts collaborates to bridge the gap between traditional farming practices and modern technology.At AgriCure, we are committed to empowering farmers with intelligent solutions for plant health management and sustainable agriculture."
+      },
+      "whyagricure":{
+        "title":"Why Choose AgriCure",
+        "features":{
+          "feature1":{
+            "title": "Advanced AI",
+            "description": "Harness cutting-edge AI technology for real-time pest detection and accurate plant health diagnostics."
+          },
+          "feature2":{
+            "title": "Personalized Care",
+            "description": "Tailored treatment recommendations for your plants"
+          },
+          "feature3":{
+            
+            "title": "Sustainable Future",
+            "description": "Promoting eco-friendly and sustainable plant care practices"
+          }
+        }
+      }
+    }
+  }
