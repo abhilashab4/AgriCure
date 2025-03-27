@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { FaLeaf, FaGithub, FaMoon, FaSun } from 'react-icons/fa';
 import HomePage from './components/HomePage';
-// import AboutPage from './components/AboutPage';
+import DiseaseInfoPage from './components/DiseaseInfoPage';
+import AboutPage from './components/AboutPage';
+
 
 function MainPage() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -61,7 +63,8 @@ function MainPage() {
       <main className="pt-16">
         <Routes>
           <Route path="/" element={<HomePage handleImageUpload={handleImageUpload} selectedImage={selectedImage} isAnalyzing={isAnalyzing} result={result} faqs={faqs} />} />
-          {/* <Route path="/about" element={<AboutPage />} /> */}
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/diseaseInfo" element ={<DiseaseInfoPage/>}/>
         </Routes>
       </main>
 

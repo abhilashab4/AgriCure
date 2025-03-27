@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { FaUpload, FaCamera, FaRobot, FaClipboardList } from "react-icons/fa";
 import { Disclosure, Transition } from "@headlessui/react";
 import axios from "axios";
+// import DiseaseInfoPage from "./DiseaseInfoPage";
+import { useNavigate } from "react-router-dom";
+
 
 const HomePage = ({ faqs }) => {
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -40,6 +44,11 @@ const HomePage = ({ faqs }) => {
     setIsAnalyzing(false);
   };
 
+  
+  const handleLearnMore = () => {
+    navigate(`/disease-info/${encodeURIComponent(result)}`)
+};
+
   return (
     <>
       {/* Hero Section */}
@@ -73,7 +82,7 @@ const HomePage = ({ faqs }) => {
       </motion.section>
 
 
-      {/* Image Preview & Results */}
+      {/* image preview and result  */}
 {imagePreview && (
   <section className="py-8 bg-white dark:bg-gray-900">
     <div className="container mx-auto px-6">
@@ -88,19 +97,21 @@ const HomePage = ({ faqs }) => {
           {isAnalyzing ? "Analyzing..." : "Analyze Image"}
         </button>
 
+
+
+        
         {result && (
           <div className="bg-green-50 dark:bg-gray-800 p-6 rounded-lg mt-4">
             <p className="text-gray-900 dark:text-white font-semibold">Disease: {result}</p>
             
             {/* Learn More Button */}
-            <a
-              href={`http://127.0.0.1:8000/api/disease-info/${encodeURIComponent(result)}/`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white transition-colors duration-200"
-            >
-              Learn More
-            </a>
+          <a
+            onClick={handleLearnMore}
+            className="mt-4 inline-block px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white transition-colors duration-200 cursor-pointer"
+          >
+            Learn More
+          </a>
+
           </div>
         )}
       </div>
@@ -118,7 +129,7 @@ const HomePage = ({ faqs }) => {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: FaCamera, title: 'Capture', description: 'Take a clear photo of your plant leaf' },
+              { icon: FaCamera, title: 'Upload', description: 'Upload a clear photo of your plant leaf' },
               { icon: FaRobot, title: 'Analyze', description: 'Our AI processes the image for disease patterns' },
               { icon: FaClipboardList, title: 'Diagnose', description: 'Get detailed health analysis and recommendations' }
             ].map((step, index) => (
