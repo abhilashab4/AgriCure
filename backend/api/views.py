@@ -9,7 +9,7 @@ from .models import DiseaseInfo
 from .serializers import DiseaseInfoSerializer
 from rest_framework import status
 # Load the trained model
-model_path = r"D:\Aetherion\AgriCure\backend\model_files\model.pth"
+model_path = "C:/Users/Gagan Shetty/Desktop/Agricure/AgriCure/backend/model_files/model.pth"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define the correct model architecture
