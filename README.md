@@ -75,7 +75,7 @@ python manage.py runserver
 #### Step 1: Navigate to the Frontend Directory
 
 ```bash
-cd ../frontend
+cd frontend
 ```
 
 #### Step 2: Install Dependencies
