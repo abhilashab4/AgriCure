@@ -22,7 +22,7 @@ AgriCure is an AI-powered crop disease detection system that helps farmers and a
 |------------|-------------------------------|
 | Frontend   | React, Tailwind CSS           |
 | Backend    | Django, Django REST Framework |
-| ML Model   | TensorFlow / PyTorch          |
+| ML Model   | PyTorch                       |
 | Database   | SQLite (default)              |
 
 ---
@@ -102,24 +102,13 @@ npm run dev
 
 ---
 
-## API Endpoints
-
-| Method | Endpoint         | Description                        |
-|--------|------------------|------------------------------------|
-| POST   | `/api/predict/`  | Upload image and get prediction    |
-| GET    | `/api/diseases/` | List all supported crop diseases   |
-| POST   | `/api/register/` | Register a new user                |
-| POST   | `/api/login/`    | User authentication (JWT token)    |
-
----
-
 ## Folder Structure
 
 ```
 AgriCure/
 ├── backend/
 │   ├── api/
-│   ├── model/
+│   ├── model_files/
 │   ├── manage.py
 │   └── ...
 ├── frontend/
@@ -128,12 +117,6 @@ AgriCure/
 │   └── ...
 └── README.md
 ```
-
----
-
-## Screenshots
-
-*Add screenshots of the UI and prediction outputs here*
 
 ---
 
