@@ -111,7 +111,6 @@ const HomePage = ({ faqs }) => {
       Disease: {result}
     </p>
 
-    {/* Show message if the plant is healthy, otherwise show Learn More button */}
     {result.toLowerCase().includes("healthy") ? (
       <p className="text-green-600 font-medium mt-2">The plant is healthy.</p>
     ) : (
