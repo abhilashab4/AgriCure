@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import PDFReport from "./PdfButton";
 import { FaDownload } from "react-icons/fa";
 
+const BASE_URL = "http://127.0.0.1:8000"; // Base URL for media files
 
 const DiseaseInfoPage = () => {
   const { diseaseName } = useParams();
-  const decodedDiseaseName = decodeURIComponent(diseaseName); // Handle URL encoding issues
+  const decodedDiseaseName = decodeURIComponent(diseaseName);
   const [diseaseInfo, setDiseaseInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,7 +42,19 @@ const DiseaseInfoPage = () => {
 
   return (
     <div className="min-h-screen px-6 py-12 bg-green-50 dark:bg-green-900/20">
-    <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-2xl">
+      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-2xl">
+
+        {/* ✅ Display Disease Image */}
+        {diseaseInfo.image && (
+          <div className="flex justify-center mb-4">
+            <img
+              src={`${BASE_URL}${diseaseInfo.image}`} // Concatenate base URL + image path
+              alt={diseaseInfo.name}
+              className="w-64 h-64 object-cover rounded-lg shadow-md"
+            />
+          </div>
+        )}
+
         <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
           {diseaseInfo?.name || "Unknown Disease"}
         </h1>
@@ -49,7 +62,7 @@ const DiseaseInfoPage = () => {
           {diseaseInfo?.description || "No description available."}
         </p>
 
-        {/* Disease Cause */}
+        {/* Cause */}
         {diseaseInfo?.cause && (
           <div className="mb-4">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Cause</h3>
@@ -101,31 +114,27 @@ const DiseaseInfoPage = () => {
               📺 Watch on YouTube
             </a>
           </div>
-
         )}
 
         {/* PDF Download Link */}
         <PDFDownloadLink document={<PDFReport diseaseInfo={diseaseInfo} />} fileName="disease-report.pdf">
-  {({ blob, url, loading, error }) =>
-    loading ? (
-      <p className="text-center text-gray-600 dark:text-gray-300">Generating PDF...</p>
-    ) : (
-      <a
-        href={url}
-        download="disease-report.pdf"  // Force download
-        target="_blank"
-        rel="noopener noreferrer"
-        className="px-2 py-1 text-sm bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md inline-flex items-center mt-2"
-      >
-        <FaDownload className="mr-1 text-xs" />
-        Download PDF
-      </a>
-    )
-  }
-</PDFDownloadLink>
-
-
-
+          {({ blob, url, loading, error }) =>
+            loading ? (
+              <p className="text-center text-gray-600 dark:text-gray-300">Generating PDF...</p>
+            ) : (
+              <a
+                href={url}
+                download="disease-report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1 text-sm bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md inline-flex items-center mt-2"
+              >
+                <FaDownload className="mr-1 text-xs" />
+                Download PDF
+              </a>
+            )
+          }
+        </PDFDownloadLink>
 
       </div>
     </div>

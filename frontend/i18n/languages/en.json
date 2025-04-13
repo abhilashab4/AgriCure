@@ -87,6 +87,12 @@
             "description": "Promoting eco-friendly and sustainable plant care practices"
           }
         }
-      }
+      },
+      "english": {
+          "title": "Join Our Mission",
+          "description": "We welcome contributions from developers, plant enthusiasts, and anyone passionate about combining technology with plant care.",
+          "buttonText": "Contribute on GitHub"
+        }
+        
     }
   }

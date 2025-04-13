@@ -133,10 +133,9 @@ const AboutPage = () => {
             transition={{ delay: 0.8 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Join Our Mission</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t('about.english.title')}</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-8">
-              We welcome contributions from developers, plant enthusiasts, and anyone passionate about combining 
-              technology with plant care.
+            {t('about.english.description')}
             </p>
             <a
               href="https://github.com"
@@ -145,7 +144,7 @@ const AboutPage = () => {
               className="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white transition-colors duration-200"
             >
               <FaGithub className="mr-2" />
-              Contribute on GitHub
+              {t('about.english.buttonText')}
             </a>
           </motion.div>
         </div>

@@ -8,8 +8,9 @@ from rest_framework.response import Response
 from .models import DiseaseInfo
 from .serializers import DiseaseInfoSerializer
 from rest_framework import status
+
 # Load the trained model
-model_path = r"D:\Aetherion\AgriCure\backend\model_files\model.pth"
+model_path = "D:/Aetherion/AgriCure/backend/model_files/model.pth"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define the correct model architecture
@@ -80,17 +81,6 @@ def detect_disease(request):
 
 
 
-# @api_view(["GET"])
-# def disease_info(request, disease_name):
-#     disease = get_object_or_404(Disease, name__iexact=disease_name)  # Case-insensitive lookup
-#     serializer = DiseaseSerializer(disease)
-#     return Response(serializer.data)
-
-
-
-
-
-
 @api_view(['POST', 'GET'])
 def diseaseinfo(request):
     if request.method == 'POST':
@@ -118,4 +108,6 @@ def get_disease(request, name):
     info = DiseaseInfo.objects.get(name=name)
     serializer = DiseaseInfoSerializer(info, many=False)
     return Response(serializer.data)
+
+
 
