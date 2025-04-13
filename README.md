@@ -131,5 +131,5 @@ This project is licensed under the [MIT License](LICENSE)
 
 ## Contact
 
-**Author**: Abhilash B  
+**Author**: Abhilash A B  
 **GitHub**: [@abhilashab4](https://github.com/abhilashab4)
