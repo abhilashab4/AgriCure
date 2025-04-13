@@ -94,14 +94,6 @@ npm run dev
 
 ---
 
-## Model Integration
-
-1. Place your trained ML model (`.h5` / `.pt`) inside the `backend/model/` folder.
-2. Update your Django view (e.g., `views.py`) to load and use the model for prediction.
-3. Ensure any preprocessing used during training is also done before prediction.
-
----
-
 ## Folder Structure
 
 ```
