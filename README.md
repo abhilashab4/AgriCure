@@ -116,18 +116,10 @@ AgriCure/
 
 - Add support for more crops and plant types
 - Include a dashboard for farmers to track predictions
-- Add multi-language support
 - Integrate chatbot for agri assistance
 - Admin panel for data management and analytics
 - Deploy using Docker & CI/CD pipeline
 
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE)
-
----
 ---
 ## Contributors
 <a href="https://github.com/abhilashab4/AgriCure/graphs/contributors">
