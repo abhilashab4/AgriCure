@@ -128,7 +128,13 @@ AgriCure/
 This project is licensed under the [MIT License](LICENSE)
 
 ---
+---
+## Contributors
+<a href="https://github.com/abhilashab4/AgriCure/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=abhilashab4/AgriCure" />
+</a>
 
+---
 ## Contact
 
 **Author**: Abhilash A B  
